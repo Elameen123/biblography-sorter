@@ -522,7 +522,8 @@
                     
                     // Generate preview using mammoth
                     const arrayBuffer = await file.arrayBuffer();
-                    const result = await mammoth.convertToHtml(arrayBuffer);
+                   const result = await mammoth.convertToHtml({ arrayBuffer });
+
                     const paragraphs = this.extractParagraphs(result.value);
                     this.displayOriginalContent(paragraphs);
                     
@@ -613,7 +614,7 @@
                 try {
                     // Get file preview using mammoth for approximate sorted view
                     const arrayBuffer = await this.fileInput.files[0].arrayBuffer();
-                    const result = await mammoth.convertToHtml(arrayBuffer);
+                    const result = await mammoth.convertToHtml({ arrayBuffer });
                     const paragraphs = this.extractParagraphs(result.value);
                     
                     // Sort paragraphs for preview (this is just for display, real sorting is in backend)
